@@ -75,13 +75,13 @@ async def callback_inline(call):
         back_button = types.InlineKeyboardButton(text="🔙 Вернуться в главное меню", callback_data="subscriber")
         keyboard.add(register_button, back_button)
         await bot.delete_message(chat_id=call.message.chat.id, message_id=call.message.id)
-        await bot.send_message(chat_id=call.message.chat.id,
-                         text="🔷 1. Для начала зарегистрируйтесь по ссылке на сайте <a href='https://1wytvn.life/?open=register#q7r9' style='text-decoration:none'>1WIN (CLICK)</a>\n"
+        await bot.send_photo(chat_id=call.message.chat.id,
+                             photo=open('resources/registration.jpg', 'rb'),
+                         caption="🔷 1. Для начала зарегистрируйтесь по ссылке на сайте <a href='https://1wytvn.life/?open=register#q7r9' style='text-decoration:none'>1WIN (CLICK)</a>\n"
                               "🔷 2. После успешной регистрации cкопируйте ваш айди на сайте (Вкладка 'пополнение' и в правом верхнем углу будет ваш ID).)\n"
                               "🔷 3. И отправьте его боту в ответ на это сообщение!",
                          reply_markup=keyboard,
-                         parse_mode='HTML',
-                         disable_web_page_preview=True
+                         parse_mode='HTML'
                          )
 
 
@@ -90,7 +90,7 @@ async def callback_inline(call):
         back_button = types.InlineKeyboardButton(text="🔙 Вернуться в главное меню", callback_data="subscriber")
         keyboard.add(back_button)
         await bot.delete_message(chat_id=call.message.chat.id, message_id=call.message.id)
-        await bot.send_message(chat_id=call.message.chat.id, text="Бот основан и обучен на кластере нейросети 🖥 [bitsGap].\n\n"
+        await bot.send_photo(chat_id=call.message.chat.id,photo=open('resources/instruction.JPG', 'rb'), caption="Бот основан и обучен на кластере нейросети 🖥 [bitsGap].\n\n"
                                                        "Для тренировки бота было сыграно 🎰10.000+ игр.\n"
                                                        "В данный момент пользователи бота успешно делают в день 15-25% от своего 💸 капитала!\n\n"
                                                        "На текущий момент бот по сей день проходит проверки и  исправления! Точность бота составляет 92%!\n\n"
@@ -104,8 +104,7 @@ async def callback_inline(call):
                                                        "🟢 5. Запросить сигнал в боте и ставить по сигналам из бота.\n\n"
                                                        "🟢 6. При неудачном сигнале советуем удвоить(Х²) ставку что бы полностью перекрыть потерю при следующем сигнале",
                          reply_markup=keyboard,
-                         parse_mode="HTML",
-                         disable_web_page_preview=True
+                         parse_mode="HTML"
                          )
 
     if call.data == "get_signal":
